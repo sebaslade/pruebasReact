@@ -1,24 +1,43 @@
-const Items = ({nombre, visto}) =>{
-    return(
-        <li>{nombre}
-        {visto ? '✅':'❌'}
-        </li>
-    )
-}
+import { useState } from "react"
+
+const Item = ( {nombre, visto} ) => {
+	return (
+		<li>
+			{nombre}
+			{visto ? "✅" : "❌"}
+		</li>
+	);
+};
 export const ListadoApp = () => {
-  return (
-    <>
-    <h1>Listado ciudades</h1>
-    <ol>
-        <Items nombre="Lima" visto={true}></Items>
-        <Items nombre="California" visto={true}></Items>
-        <Items nombre="Berlín" visto={true}></Items>
-        <Items nombre="Madrid" visto={true}></Items>
-        <Items nombre="Paris" visto={true}></Items>
-        <Items nombre="Buenos Aires" visto={true}></Items>
-        <Items nombre="Pekín" visto={false}></Items>
-        <Items nombre="Tokyo" visto={false}></Items>
-    </ol>
-    </>
-  )
-}
+	const addCities = () =>{
+		setArreglo([...arreglo,{nombre: 'nuevo', visto: false}])
+	}
+	let listadoCiudades = [
+		{ ciudad: "Lima", visto: true },
+		{ nombre: "California", visto: true },
+		{ nombre: "Berlín", visto: true },
+		{ nombre: "Madrid", visto: true },
+		{ nombre: "Paris", visto: true },
+		{ nombre: "Buenos Aires", visto: true },
+		{ nombre: "Tokyo", visto: false },
+		{ nombre: "Pekín", visto: false },
+	];
+	const [arreglo, setArreglo] = useState(listadoCiudades);
+	console.log(arreglo)
+	return (
+		<>
+			<h1>Listado ciudades</h1>
+			<ol>
+				{arreglo.map(item => <Item key={item.nombre} nombre={item.nombre} visto={item.visto}></Item>)}
+			</ol>
+			<button onClick={()=>addCities()}>Agregar ciudad</button>
+		</>
+	);
+};
+
+/*
+//CASO: VER EL FALSE
+{visto ? '✅':'❌'}
+//CASO: SOLO VER EL TRUE
+{visto && '✅'}
+*/
