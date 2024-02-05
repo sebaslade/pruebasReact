@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles.css'
-import { ListadoApp } from './ListadoApp'
+import { UsersApp } from './UsersApp'
 
 /*
 PROPS:
@@ -11,6 +11,6 @@ import { PrimerComponente } from './PrimerComponente'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<ListadoApp />
+		<UsersApp />
 	</React.StrictMode>,
 )

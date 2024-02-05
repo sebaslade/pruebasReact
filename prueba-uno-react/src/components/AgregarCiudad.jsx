@@ -8,6 +8,8 @@ export const AgregarCiudad = ({ agregarCiudad }) => {
     }
     const onSubmit = (event) => {
         event.preventDefault();
+        //let valor  = inputValue.trim() PARA ESPACIOS EN BLANCOS
+        if(inputValue < 1) return
         const nuevaCiudad = {
             nombre: inputValue,
             visto: false,
