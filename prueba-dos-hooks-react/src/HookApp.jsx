@@ -1,11 +1,11 @@
-import { ContadorComponent } from "./components/ContadorComponent"
+import { FormularioComponent } from "./components/FormularioComponent"
 
 export const HookApp = () => {
     return (
         <>
             <h1>Aplicación Hooks</h1>
             <hr />
-            <ContadorComponent></ContadorComponent>
+            <FormularioComponent></FormularioComponent>
         </>
     )
 }
