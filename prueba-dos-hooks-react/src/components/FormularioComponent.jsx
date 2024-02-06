@@ -1,16 +1,22 @@
+import { useRef } from "react"
 import { useForm } from "../hooks/useForm"
 
 export const FormularioComponent = () => {
+
+    const focusRef = useRef()
+
     const initialForm = {
         userName:'',
         email: '',
         password: ''
     }
+
     const {formState, userName, email, password, onInputChange}=useForm(initialForm)
     const onSubmit = (event) =>{
         event.preventDefault()
         console.log(formState)
     }
+
     return (
         <form onSubmit={onSubmit}>
             <div className="mb-3">
