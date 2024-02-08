@@ -7,6 +7,7 @@ export const CalculosComponent = () => {
 
     const getCalculo = (listNumber) => useMemo(() => {
         console.log('Calculando')
+        //El método reduce() en JavaScript se utiliza para reducir un array a un solo valor
         return listNumber.reduce((a, b) => a + b)
     }, [listNumber])
 
