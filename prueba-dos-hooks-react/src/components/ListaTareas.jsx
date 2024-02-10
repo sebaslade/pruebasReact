@@ -47,19 +47,20 @@ const tareaReducer = (state = initialState, action = {}) => {
 
 console.log(tareaReducer(initialState, agregarTarea))
 
-const agregarTarea = () => {
-    event.preventDefault()
-    //type: '[TAREAS] Agregar Tarea',
-    //payload: nuevaTarea
-}
+
 
 export const ListaTareas = () => {
-    
-    const {} = useForm({tarea:''})
 
+    const { tarea, formState, onInputChange } = useForm({ tarea: '' })
+    const agregarTarea = (event) => {
+        event.preventDefault()
+        console.log(formState)
+        //type: '[TAREAS] Agregar Tarea',
+        //payload: nuevaTarea
+    }
     return (
         <>
-            <form>
+            <form onSubmit={agregarTarea}>
                 <div className="mb-3">
                     <label
                         htmlFor="tarea"
@@ -68,9 +69,11 @@ export const ListaTareas = () => {
                     <input
                         type="text"
                         className="form-control"
-                        id="tarea"
+                        name="tarea"
                         aria-describedby="emailHelp"
                         placeholder="Ingresé tarea"
+                        value={tarea}
+                        onChange={onInputChange}
                     />
                 </div>
                 <button type="submit" className="btn btn-light">Submit</button>
