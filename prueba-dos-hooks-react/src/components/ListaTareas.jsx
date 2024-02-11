@@ -1,19 +1,12 @@
+import { useReducer } from "react"
 import { useForm } from "../hooks/useForm"
 
 const initialState = [{
-    id: 1,
+    id: new Date().getDate(),
     tarea: 'Explicar Reducers',
     finalizada: false
 }]
-
-const nuevaTarea = {
-    id: 2,
-    tarea: 'Explicar useReducer',
-    finalizada: false
-}
-
-
-
+/*
 const editarTarea = {
     type: '[TAREAS] Editar Tarea',
     payload: nuevaTarea
@@ -21,13 +14,12 @@ const editarTarea = {
 
 const eliminarTarea = {
     type: '[TAREAS] Eliminar Tarea',
-    payload: nuevaTarea
 }
 
 const borrarTareas = {
     type: '[TAREAS] Borrar Tareas',
-    payload: nuevaTarea
 }
+*/
 
 const tareaReducer = (state = initialState, action = {}) => {
     switch (action.type) {
@@ -35,28 +27,39 @@ const tareaReducer = (state = initialState, action = {}) => {
             return [...state, action.payload];
         case '[TAREAS] Editar Tarea':
         //return[...state, action.payload]
+        console.log('editar'); break;
         case '[TAREAS] Eliminar Tarea':
         //return[...state, action.payload]
+        console.log('eliminar');break;
         case '[TAREAS] Borrar Tareas':
             return []
         default:
-            break;
+            return state;
     }
     return state
 }
 
-console.log(tareaReducer(initialState, agregarTarea))
-
-
-
 export const ListaTareas = () => {
+
+    const [tareasState, dispatch] = useReducer(tareaReducer, initialState)
 
     const { tarea, formState, onInputChange } = useForm({ tarea: '' })
     const agregarTarea = (event) => {
         event.preventDefault()
+        if(event.target.value == '') return;
         console.log(formState)
         //type: '[TAREAS] Agregar Tarea',
         //payload: nuevaTarea
+        const tareaCompleta = {
+            id: new Date().getTime(),
+            tarea: formState.tarea,
+            finalizada: false
+        }
+        const action = {
+            type: '[TAREAS] Agregar Tarea',
+            payload: tareaCompleta
+        }
+        dispatch(action)
     }
     return (
         <>
@@ -78,6 +81,14 @@ export const ListaTareas = () => {
                 </div>
                 <button type="submit" className="btn btn-light">Submit</button>
             </form>
+            <hr />
+            <ul>
+                {tareasState.map (item =>{
+                    return(
+                        <li key={item.id}>{item.tarea}</li>
+                    )
+                })}
+            </ul>
         </>
     )
 }
