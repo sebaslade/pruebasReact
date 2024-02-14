@@ -5,6 +5,8 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    background-color: #031926;
+    color: white;
 }
 
 .container {
@@ -32,15 +34,17 @@ input[type="text"] {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    margin-left: 5px;
+    background-color: #fcad37;
+    color: #031926;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #fcad37;
 }
 
 h2 {
@@ -53,8 +57,8 @@ p {
 }
 
 img {
-    width: 50px;
-    height: 50px;
+    width: auto;
+    height: 110px;
     margin-top: 10px;
 }
 

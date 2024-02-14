@@ -3,7 +3,9 @@ import { useState } from "react"
 export const WeatherApp = () => {
     const url = 'https://api.openweathermap.org/data/2.5/weather'
     const API_KEY = '77365bcd5ae53627a126cf8e980d1eea'
-    let urlIcon = 'https://openweathermap.org/img/wn/'
+    const urlIcon = 'https://openweathermap.org/img/wn/'
+
+    const difKelvin = 273.15
 
     const [ciudad, setCiudad] = useState('')
     const [dataClima, setDataClima] = useState(null)
@@ -20,7 +22,7 @@ export const WeatherApp = () => {
     const fetchClima = async() =>{
         try {
             const response = await fetch(`${url}?q=${ciudad}&appid=${API_KEY}`)
-            const data = await response.json
+            const data = await response.json()
             setDataClima(data)
         } catch (error) {
             console.warn('Ocurrió el siguiente problema: ', error)
@@ -38,6 +40,16 @@ export const WeatherApp = () => {
                 />
                 <button type="submit">Buscar</button>
             </form>
+            {
+                dataClima && (
+                    <div>
+                        <h2>{dataClima.name}, {dataClima.sys.country}</h2>
+                        <p>Temperatura: {parseInt(dataClima?.main?.temp - difKelvin)}°C</p>
+                        <p>Condición meteorologica: {dataClima.weather[0].description}</p>
+                        <img src={`${urlIcon}${dataClima.weather[0].icon}@2x.png`}/>
+                    </div>
+                )
+            }
         </div>
     )
 }
