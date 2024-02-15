@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
+body{
+    font-family: 'Poppins';
+    background-color: #031926;
+}
+
+h1{
+    padding-top: 20px;
+}
+
+.tarjeta {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-imagen {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.tarjeta-contenido {
+    flex: 1;
+}
+
+.tarjeta-titulo {
+    margin: 0;
+}
+
+.tarjeta-descripcion {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.tarjeta-precio {
+    margin: 0;
+    font-weight: bold;
+}
+
+.boton-agregar {
+    background-color: #fcad37;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-agregar:hover {
+    background-color: #cf9742;
+}
+.boton-quitar {
+    background-color: #af4c4c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-quitar:hover {
+    background-color: #a04545;
+}
+
+/* Estilos para el carrito */
+.carrito {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
